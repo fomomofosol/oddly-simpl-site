@@ -10,12 +10,9 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="site-header">
-	<div class="container">
-		<nav class="nav">
-			<a href="/" class="logo">
-				<img src="/images/new-simple-logo.jpg" alt="simpl." class="logo-img" />
-			</a>
-			
+	<div class="header-inner max-width">
+		<a href="/" class="logo">simpl.</a>
+		<nav>
 			<ul class="nav-menu">
 				{navLinks.map(link => (
 					<li class={currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) ? 'active' : ''}>
@@ -24,65 +21,66 @@ const currentPath = Astro.url.pathname;
 				))}
 			</ul>
 		</nav>
+		<a class="btn btn--primary" href="#learn-more">launch a campaign</a>
 	</div>
 </header>
 
 <style>
 	.site-header {
-		background: #fff;
-		border-bottom: 1px solid #eee;
 		position: sticky;
 		top: 0;
-		z-index: 100;
+		width: 100%;
+		z-index: 200;
+		background: rgba(10, 11, 17, 0.8);
+		backdrop-filter: blur(12px);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 	}
-	
-	.container {
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 0 1.5rem;
-	}
-	
-	.nav {
+
+	.header-inner {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		height: 80px;
+		height: 76px;
 	}
-	
+
 	.logo {
-		display: flex;
-		align-items: center;
+		font-size: 1.35rem;
+		font-weight: 700;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: #fff;
+		text-decoration: none;
 	}
-	
-	.logo-img {
-		height: 40px;
-		width: auto;
-	}
-	
+
 	.nav-menu {
 		display: flex;
-		list-style: none;
+		align-items: center;
 		gap: 2rem;
+		list-style: none;
+		margin: 0;
 	}
-	
+
 	.nav-menu a {
+		text-transform: uppercase;
+		font-size: 0.85rem;
+		letter-spacing: 0.3em;
 		text-decoration: none;
-		color: #333;
-		font-family: 'Poppins', sans-serif;
-		font-weight: 500;
-		font-size: 0.95rem;
-		transition: color 0.2s;
-		padding: 0.5rem 0;
+		color: rgba(255, 255, 255, 0.8);
+		transition: color 0.2s ease;
 	}
-	
-	.nav-menu a:hover,
-	.nav-menu li.active a {
-		color: #ff6b6b;
+
+	.nav-menu li.active a,
+	.nav-menu a:hover {
+		color: #fff;
 	}
-	
-	@media (max-width: 768px) {
+
+	@media (max-width: 900px) {
 		.nav-menu {
 			display: none;
+		}
+		
+		.header-inner {
+			gap: 1rem;
 		}
 	}
 </style>
