@@ -1,280 +1,364 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import Layout from '../layouts/Layout.astro';
 import { SITE_TITLE } from '../consts';
 
 const title = `About | ${SITE_TITLE}`;
-const description = "Meet Anthony Pacheco and the simpl. team. We're music marketing experts helping artists and labels grow their fanbase through data-driven strategies.";
+const description = "Meet the team behind simpl. - Anthony Pacheco and David Puckett. We've helped hundreds of artists grow their Spotify streams and build dedicated fanbases.";
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section class="page-header">
-				<div class="container">
-					<h1>About simpl.</h1>
-					<p class="lead">Music marketing that actually works.</p>
+<Layout title={title} description={description}>
+	<!-- Hero Section -->
+	<section class="page-hero">
+		<div class="container">
+			<h1>About simpl.</h1>
+			<p class="subtitle">Music marketing that actually works</p>
+		</div>
+	</section>
+	
+	<!-- Story Section -->
+	<section class="story-section">
+		<div class="container">
+			<div class="story-grid">
+				<div class="story-content">
+					<h2>Our Story</h2>
+					<p> simpl. was founded with a simple mission: help independent artists get their music heard. In an industry dominated by major labels with unlimited resources, we saw independent artists struggling to break through the noise.</p>
+					<p>We started by testing every music marketing strategy we could find. Some worked, most didn't. But through years of experimentation and over $1 million in ad spend, we developed a playbook that consistently delivers results.</p>
+					<p>Today, we've helped hundreds of artists grow their streams, build dedicated fanbases, and turn their passion into sustainable careers. We've worked with everyone from bedroom producers to major label artists, and our strategies have generated over 500 million organic streams.</p>
 				</div>
-			</section>
-
-			<section class="about-content">
-				<div class="container">
-					<div class="about-grid">
-						<div class="about-text">
-							<h2>Our Story</h2>
-							<p>simpl. was founded by Anthony Pacheco with a simple mission: help independent artists and record labels grow their music careers through effective, data-driven marketing strategies.</p>
-							<p>After years of working in the music industry and seeing too many artists waste money on ineffective marketing, Anthony set out to create a different kind of agency—one focused on real results, transparency, and education.</p>
-							<p>Today, simpl. has helped over 500 artists and labels grow their streams, build their fanbase, and achieve their music career goals. We've managed over $1 million in ad spend and maintained a 127% average growth rate for our clients.</p>
-						</div>
-						<div class="about-image">
-							<img src="/images/Anthony-Pacheco.png" alt="Anthony Pacheco" />
-						</div>
+				<div class="story-image">
+					<img src="/images/simpl-team-photo.webp" alt="The simpl. team" />
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Team Section -->
+	<section class="team-section">
+		<div class="container">
+			<h2 class="section-title">Meet the Team</h2>
+			
+			<div class="team-grid">
+				<div class="team-member">
+					<div class="member-photo">
+						<img src="/images/anthony-pacheco.webp" alt="Anthony Pacheco" />
 					</div>
+					<h3>Anthony Pacheco</h3>
+					<p class="member-role">Founder & CEO</p>
+					<p class="member-bio">Anthony founded simpl. after spending years in the music industry seeing independent artists struggle to get heard. With a background in digital marketing and a passion for music, he's helped hundreds of artists grow their careers. When he's not working with clients, you'll find him producing music or exploring new marketing strategies.</p>
 				</div>
-			</section>
-
-			<section class="values">
-				<div class="container">
-					<h2>What We Believe</h2>
-					<div class="values-grid">
-						<div class="value-card">
-							<h3>Results First</h3>
-							<p>We focus on metrics that matter—real fan growth, engagement, and ROI. Not vanity numbers.</p>
-						</div>
-						<div class="value-card">
-							<h3>Transparency</h3>
-							<p>You'll always know what we're doing and why. No black boxes or mysterious "secret strategies."</p>
-						</div>
-						<div class="value-card">
-							<h3>Education</h3>
-							<p>We believe in teaching artists to fish. Our blog and resources help you understand the marketing landscape.</p>
-						</div>
-						<div class="value-card">
-							<h3>Testing</h3>
-							<p>Marketing isn't one-size-fits-all. We test relentlessly to find what works for your unique music and audience.</p>
-						</div>
+				
+				<div class="team-member">
+					<div class="member-photo">
+						<img src="/images/david-puckett.webp" alt="David Puckett" />
 					</div>
+					<h3>David Puckett</h3>
+					<p class="member-role">Co-Founder & CMO</p>
+					<p class="member-bio">David is the drummer for We Came As Romans and brings a unique artist perspective to our marketing strategies. As CEO of Hyperculture Marketing, he understands what artists need to succeed in today's music landscape. His insider knowledge of the industry helps us create campaigns that actually resonate with fans.</p>
 				</div>
-			</section>
-
-			<section class="stats">
-				<div class="container">
-					<div class="stats-grid">
-						<div class="stat">
-							<span class="stat-number">500+</span>
-							<span class="stat-label">Campaigns Completed</span>
-						</div>
-						<div class="stat">
-							<span class="stat-number">$1M+</span>
-							<span class="stat-label">Ad Spend Managed</span>
-						</div>
-						<div class="stat">
-							<span class="stat-number">127%</span>
-							<span class="stat-label">Average Growth Rate</span>
-						</div>
-					</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Values Section -->
+	<section class="values-section">
+		<div class="container">
+			<h2 class="section-title light">What We Believe</h2>
+			
+			<div class="values-grid">
+				<div class="value-card">
+					<div class="value-icon">🎯</div>
+					<h3>Results First</h3>
+					<p>We don't care about vanity metrics. Our focus is on getting you real fans who will stream your music, buy your merch, and come to your shows.</p>
 				</div>
-			</section>
-
-			<section class="testimonials">
-				<div class="container">
-					<h2>What Our Clients Say</h2>
-					<div class="testimonials-grid">
-						<blockquote class="testimonial">
-							<p>"Anthony is quite literally the best in the biz. His strategies have completely transformed how we approach marketing for our artists."</p>
-							<footer>
-								<img src="/images/sean-lewow.webp" alt="Sean Lewow" />
-								<cite>Sean Lewow<br><small>Ourros Management</small></cite>
-							</footer>
-						</blockquote>
-						<blockquote class="testimonial">
-							<p>"Working with Anthony is awesome! Not only do we have a better understanding of how to effectively run ads, but we also have a great time talking with him."</p>
-							<footer>
-								<img src="/images/here-for-the-night-band.webp" alt="Here for the Night" />
-								<cite>Here for the Night<br><small>Independent Artist</small></cite>
-							</footer>
-						</blockquote>
-					</div>
+				
+				<div class="value-card">
+					<div class="value-icon">🔬</div>
+					<h3>Always Testing</h3>
+					<p>The music industry changes fast. We constantly test new strategies, platforms, and approaches to stay ahead of the curve.</p>
 				</div>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+				
+				<div class="value-card">
+					<div class="value-icon">🤝</div>
+					<h3>Partnership</h3>
+					<p>We don't see ourselves as a service provider – we're your partner in growth. Your success is our success.</p>
+				</div>
+				
+				<div class="value-card">
+					<div class="value-icon">💡</div>
+					<h3>Transparency</h3>
+					<p>No BS, no hidden fees. We show you exactly what we're doing, why we're doing it, and how it's performing.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Stats Section -->
+	<section class="stats-section">
+		<div class="container">
+			<div class="stats-grid">
+				<div class="stat-item">
+					<h3>500+</h3>
+					<p>Campaigns Completed</p>
+				</div>
+				<div class="stat-item">
+					<h3>500M+</h3>
+					<p>Organic Streams Generated</p>
+				</div>
+				<div class="stat-item">
+					<h3>$1M+</h3>
+					<p>Annual Ad Spend Managed</p>
+				</div>
+				<div class="stat-item">
+					<h3>127%</h3>
+					<p>Average Growth Rate</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- CTA Section -->
+	<section class="cta-section">
+		<div class="container">
+			<h2>Ready to work with us?</h2>
+			<p>Let's chat about your music marketing goals.</p>
+			<a href="/#book-a-call" class="btn-primary">Book a free call</a>
+		</div>
+	</section>
+</Layout>
 
 <style>
 	.container {
 		max-width: 1200px;
 		margin: 0 auto;
-		padding: 0 2rem;
+		padding: 0 1.5rem;
 	}
-
-	.page-header {
-		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-		color: white;
-		padding: 5rem 0;
+	
+	.page-hero {
+		background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+		color: #fff;
+		padding: 6rem 0 4rem;
 		text-align: center;
 	}
-
-	.page-header h1 {
+	
+	.page-hero h1 {
 		font-size: 3rem;
 		margin-bottom: 1rem;
 	}
-
-	.lead {
-		font-size: 1.25rem;
-		opacity: 0.9;
+	
+	.subtitle {
+		color: rgba(255,255,255,0.8);
+		font-size: 1.2rem;
 	}
-
-	.about-content {
+	
+	.story-section {
 		padding: 5rem 0;
+		background: #fff;
 	}
-
-	.about-grid {
+	
+	.story-grid {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 4rem;
 		align-items: center;
 	}
-
-	.about-text h2 {
-		font-size: 2rem;
+	
+	.story-content h2 {
+		font-size: 2.5rem;
 		margin-bottom: 1.5rem;
+		color: #1a1a2e;
 	}
-
-	.about-text p {
-		color: #666;
-		line-height: 1.7;
-		margin-bottom: 1rem;
+	
+	.story-content p {
+		color: #555;
+		margin-bottom: 1.5rem;
+		line-height: 1.8;
+		font-size: 1.05rem;
 	}
-
-	.about-image img {
+	
+	.story-image img {
 		width: 100%;
-		border-radius: 12px;
-		box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+		border-radius: 20px;
+		box-shadow: 0 20px 60px rgba(0,0,0,0.15);
 	}
-
-	.values {
+	
+	.team-section {
+		padding: 5rem 0;
 		background: #f8f9fa;
-		padding: 5rem 0;
 	}
-
-	.values h2 {
+	
+	.section-title {
 		text-align: center;
-		font-size: 2rem;
+		font-size: 2.5rem;
 		margin-bottom: 3rem;
+		color: #1a1a2e;
 	}
-
-	.values-grid {
+	
+	.section-title.light {
+		color: #fff;
+	}
+	
+	.team-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 2rem;
-	}
-
-	.value-card {
-		background: white;
-		padding: 2rem;
-		border-radius: 12px;
-		box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-	}
-
-	.value-card h3 {
-		margin-bottom: 0.75rem;
-		color: #667eea;
-	}
-
-	.value-card p {
-		color: #666;
-		line-height: 1.6;
-	}
-
-	.stats {
-		padding: 5rem 0;
-	}
-
-	.stats-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 		gap: 3rem;
+	}
+	
+	.team-member {
+		background: #fff;
+		padding: 2.5rem;
+		border-radius: 20px;
 		text-align: center;
+		box-shadow: 0 5px 30px rgba(0,0,0,0.08);
 	}
-
-	.stat-number {
-		display: block;
-		font-size: 3rem;
-		font-weight: 800;
-		color: #667eea;
-	}
-
-	.stat-label {
-		color: #666;
-		font-size: 1rem;
-	}
-
-	.testimonials {
-		background: #1a1a2e;
-		color: white;
-		padding: 5rem 0;
-	}
-
-	.testimonials h2 {
-		text-align: center;
-		font-size: 2rem;
-		margin-bottom: 3rem;
-	}
-
-	.testimonials-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-		gap: 2rem;
-	}
-
-	.testimonial {
-		background: rgba(255,255,255,0.05);
-		padding: 2rem;
-		border-radius: 12px;
-		margin: 0;
-	}
-
-	.testimonial p {
-		font-size: 1.1rem;
-		font-style: italic;
-		margin-bottom: 1.5rem;
-		opacity: 0.9;
-	}
-
-	.testimonial footer {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-	}
-
-	.testimonial img {
-		width: 50px;
-		height: 50px;
+	
+	.member-photo {
+		width: 150px;
+		height: 150px;
+		margin: 0 auto 1.5rem;
 		border-radius: 50%;
+		overflow: hidden;
+	}
+	
+	.member-photo img {
+		width: 100%;
+		height: 100%;
 		object-fit: cover;
 	}
-
-	.testimonial cite {
-		font-style: normal;
-		font-weight: 600;
+	
+	.team-member h3 {
+		font-size: 1.5rem;
+		margin-bottom: 0.5rem;
+		color: #1a1a2e;
 	}
-
-	@media (max-width: 768px) {
-		.about-grid {
+	
+	.member-role {
+		color: #ff6b6b;
+		font-weight: 600;
+		margin-bottom: 1rem;
+	}
+	
+	.member-bio {
+		color: #666;
+		line-height: 1.7;
+	}
+	
+	.values-section {
+		padding: 5rem 0;
+		background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+	}
+	
+	.values-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 2rem;
+	}
+	
+	.value-card {
+		background: rgba(255,255,255,0.05);
+		padding: 2rem;
+		border-radius: 15px;
+		text-align: center;
+		color: #fff;
+	}
+	
+	.value-icon {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+	}
+	
+	.value-card h3 {
+		font-size: 1.2rem;
+		margin-bottom: 1rem;
+	}
+	
+	.value-card p {
+		color: rgba(255,255,255,0.7);
+		line-height: 1.6;
+		font-size: 0.95rem;
+	}
+	
+	.stats-section {
+		padding: 4rem 0;
+		background: #fff;
+	}
+	
+	.stats-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 2rem;
+		text-align: center;
+	}
+	
+	.stat-item h3 {
+		font-size: 2.5rem;
+		color: #ff6b6b;
+		margin-bottom: 0.5rem;
+	}
+	
+	.stat-item p {
+		color: #666;
+	}
+	
+	.cta-section {
+		padding: 5rem 0;
+		background: #f8f9fa;
+		text-align: center;
+	}
+	
+	.cta-section h2 {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+		color: #1a1a2e;
+	}
+	
+	.cta-section p {
+		color: #666;
+		margin-bottom: 2rem;
+	}
+	
+	.btn-primary {
+		display: inline-block;
+		background: #ff6b6b;
+		color: white;
+		padding: 1rem 2.5rem;
+		border-radius: 50px;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 1rem;
+		transition: all 0.3s ease;
+		text-transform: lowercase;
+	}
+	
+	.btn-primary:hover {
+		background: #ff5252;
+		transform: translateY(-2px);
+		box-shadow: 0 10px 30px rgba(255,107,107,0.3);
+	}
+	
+	@media (max-width: 1024px) {
+		.story-grid,
+		.team-grid {
 			grid-template-columns: 1fr;
 		}
+		
+		.values-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		
 		.stats-grid {
-			grid-template-columns: 1fr;
+			grid-template-columns: repeat(2, 1fr);
 		}
-		.testimonials-grid {
+	}
+	
+	@media (max-width: 768px) {
+		.page-hero h1,
+		.section-title,
+		.cta-section h2 {
+			font-size: 2rem;
+		}
+		
+		.values-grid,
+		.stats-grid {
 			grid-template-columns: 1fr;
 		}
 	}

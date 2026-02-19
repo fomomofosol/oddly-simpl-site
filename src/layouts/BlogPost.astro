@@ -1,86 +1,226 @@
 ---
-import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
+import Layout from './Layout.astro';
 import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate } = Astro.props;
 ---
 
-<html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
-	</head>
-
-	<body>
-		<Header />
-		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+<Layout title={title} description={description}>
+	<article class="blog-post">
+		<header class="post-header">
+			<div class="container">
+				<div class="post-meta">
+					<FormattedDate date={pubDate} />
+					{updatedDate && (
+						<span class="updated">Updated: <FormattedDate date={updatedDate} /></span>
+					)}
 				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
-						<hr />
-					</div>
+				<h1>{title}</h1>
+				<p class="post-description">{description}</p>
+			</div>
+		</header>
+		
+		<div class="post-content">
+			<div class="container">
+				<div class="content-wrapper">
 					<slot />
 				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
-</html>
+			</div>
+		</div>
+	</article>
+	
+	<!-- Related Posts CTA -->
+	<section class="post-cta">
+		<div class="container">
+			<h2>Want more music marketing tips?</h2>
+			<p>Subscribe to our newsletter for weekly insights.</p>
+			<div class="cta-buttons">
+				<a href="/learn" class="btn-secondary">Read more articles</a>
+				<a href="/#book-a-call" class="btn-primary">Work with us</a>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.container {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 0 1.5rem;
+	}
+	
+	.blog-post {
+		padding-bottom: 4rem;
+	}
+	
+	.post-header {
+		background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+		color: #fff;
+		padding: 5rem 0 3rem;
+		text-align: center;
+	}
+	
+	.post-meta {
+		color: rgba(255,255,255,0.7);
+		font-size: 0.9rem;
+		margin-bottom: 1.5rem;
+	}
+	
+	.post-meta .updated {
+		margin-left: 1rem;
+		padding-left: 1rem;
+		border-left: 1px solid rgba(255,255,255,0.3);
+	}
+	
+	.post-header h1 {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+		line-height: 1.3;
+	}
+	
+	.post-description {
+		color: rgba(255,255,255,0.8);
+		font-size: 1.2rem;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	
+	.post-content {
+		padding: 3rem 0;
+		background: #fff;
+	}
+	
+	.content-wrapper {
+		font-size: 1.1rem;
+		line-height: 1.8;
+		color: #333;
+	}
+	
+	.content-wrapper :global(h2) {
+		font-size: 1.8rem;
+		margin-top: 2.5rem;
+		margin-bottom: 1rem;
+		color: #1a1a2e;
+	}
+	
+	.content-wrapper :global(h3) {
+		font-size: 1.4rem;
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+		color: #1a1a2e;
+	}
+	
+	.content-wrapper :global(p) {
+		margin-bottom: 1.5rem;
+	}
+	
+	.content-wrapper :global(ul),
+	.content-wrapper :global(ol) {
+		margin-bottom: 1.5rem;
+		padding-left: 1.5rem;
+	}
+	
+	.content-wrapper :global(li) {
+		margin-bottom: 0.5rem;
+	}
+	
+	.content-wrapper :global(a) {
+		color: #ff6b6b;
+		text-decoration: none;
+	}
+	
+	.content-wrapper :global(a:hover) {
+		text-decoration: underline;
+	}
+	
+	.content-wrapper :global(img) {
+		max-width: 100%;
+		height: auto;
+		border-radius: 10px;
+		margin: 2rem 0;
+	}
+	
+	.content-wrapper :global(blockquote) {
+		border-left: 4px solid #ff6b6b;
+		padding-left: 1.5rem;
+		margin: 2rem 0;
+		color: #555;
+		font-style: italic;
+	}
+	
+	.post-cta {
+		padding: 4rem 0;
+		background: #f8f9fa;
+		text-align: center;
+	}
+	
+	.post-cta h2 {
+		font-size: 2rem;
+		margin-bottom: 1rem;
+		color: #1a1a2e;
+	}
+	
+	.post-cta p {
+		color: #666;
+		margin-bottom: 2rem;
+	}
+	
+	.cta-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+	}
+	
+	.btn-primary {
+		display: inline-block;
+		background: #ff6b6b;
+		color: white;
+		padding: 1rem 2rem;
+		border-radius: 50px;
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		text-transform: lowercase;
+	}
+	
+	.btn-primary:hover {
+		background: #ff5252;
+		transform: translateY(-2px);
+	}
+	
+	.btn-secondary {
+		display: inline-block;
+		background: transparent;
+		color: #1a1a2e;
+		padding: 1rem 2rem;
+		border-radius: 50px;
+		text-decoration: none;
+		font-weight: 600;
+		border: 2px solid #1a1a2e;
+		transition: all 0.3s ease;
+		text-transform: lowercase;
+	}
+	
+	.btn-secondary:hover {
+		background: #1a1a2e;
+		color: #fff;
+	}
+	
+	@media (max-width: 768px) {
+		.post-header h1 {
+			font-size: 1.75rem;
+		}
+		
+		.cta-buttons {
+			flex-direction: column;
+		}
+		
+		.btn-primary,
+		.btn-secondary {
+			display: block;
+		}
+	}
+</style>

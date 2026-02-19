@@ -1,126 +1,195 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import Layout from '../../layouts/Layout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { SITE_TITLE } from '../../consts';
 import { getCollection } from 'astro:content';
+
+const title = `Learn | ${SITE_TITLE}`;
+const description = "Learn music marketing strategies, Spotify growth tactics, TikTok tips, and industry insights to grow your fanbase and streams.";
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={`Learn | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section class="page-header">
-				<div class="container">
-					<h1>Music Marketing Blog</h1>
-					<p class="lead">Learn Spotify best practices, music marketing strategy, pre-save tips, and more.</p>
-				</div>
-			</section>
-
-			<section class="blog-list">
-				<div class="container">
-					<div class="posts-grid">
-						{posts.map((post) => (
-							<article class="post-card">
-								<a href={`/learn/${post.slug}/`}>
-									<h2>{post.data.title}</h2>
-									<p class="post-description">{post.data.description?.slice(0, 200)}...</p>
-									<time datetime={post.data.pubDate.toISOString()}>
-										<FormattedDate date={post.data.pubDate} />
-									</time>
-								</a>
-							</article>
-						))}
-					</div>
-				</div>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+<Layout title={title} description={description}>
+	<!-- Hero Section -->
+	<section class="page-hero">
+		<div class="container">
+			<h1>Learn Music Marketing</h1>
+			<p class="subtitle">Strategies, tactics, and insights to grow your music career</p>
+		</div>
+	</section>
+	
+	<!-- Blog Grid -->
+	<section class="blog-section">
+		<div class="container">
+			<div class="posts-grid">
+				{posts.map((post) => (
+					<article class="post-card">
+						<a href={`/learn/${post.id}/`} class="post-link">
+							{post.data.featured && <span class="featured-badge">Featured</span>}
+							<h2 class="post-title">{post.data.title}</h2>
+							<p class="post-description">{post.data.description}</p>
+							<time class="post-date">
+								<FormattedDate date={post.data.pubDate} />
+							</time>
+						</a>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+	
+	<!-- CTA Section -->
+	<section class="cta-section">
+		<div class="container">
+			<h2>Want personalized help?</h2>
+			<p>Our team can create a custom marketing strategy for your music.</p>
+			<a href="/#book-a-call" class="btn-primary">Book a free call</a>
+		</div>
+	</section>
+</Layout>
 
 <style>
 	.container {
 		max-width: 1200px;
 		margin: 0 auto;
-		padding: 0 2rem;
+		padding: 0 1.5rem;
 	}
-
-	.page-header {
-		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-		color: white;
-		padding: 5rem 0;
+	
+	.page-hero {
+		background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+		color: #fff;
+		padding: 6rem 0 4rem;
 		text-align: center;
 	}
-
-	.page-header h1 {
+	
+	.page-hero h1 {
 		font-size: 3rem;
 		margin-bottom: 1rem;
 	}
-
-	.lead {
-		font-size: 1.25rem;
-		opacity: 0.9;
+	
+	.subtitle {
+		color: rgba(255,255,255,0.8);
+		font-size: 1.2rem;
 	}
-
-	.blog-list {
+	
+	.blog-section {
 		padding: 4rem 0;
+		background: #f8f9fa;
 	}
-
+	
 	.posts-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+		grid-template-columns: repeat(3, 1fr);
 		gap: 2rem;
 	}
-
+	
 	.post-card {
-		background: white;
-		border-radius: 12px;
-		box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-		transition: transform 0.2s, box-shadow 0.2s;
+		background: #fff;
+		border-radius: 15px;
+		overflow: hidden;
+		box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+		transition: transform 0.3s, box-shadow 0.3s;
 	}
-
+	
 	.post-card:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+		transform: translateY(-5px);
+		box-shadow: 0 15px 40px rgba(0,0,0,0.12);
 	}
-
-	.post-card a {
+	
+	.post-link {
 		display: block;
 		padding: 2rem;
-		color: inherit;
 		text-decoration: none;
+		color: inherit;
 	}
-
-	.post-card h2 {
-		font-size: 1.5rem;
+	
+	.featured-badge {
+		display: inline-block;
+		background: #ff6b6b;
+		color: #fff;
+		padding: 0.25rem 0.75rem;
+		border-radius: 20px;
+		font-size: 0.75rem;
+		font-weight: 600;
+		text-transform: uppercase;
 		margin-bottom: 1rem;
-		color: #1a1a1a;
 	}
-
+	
+	.post-title {
+		font-size: 1.25rem;
+		margin-bottom: 1rem;
+		color: #1a1a2e;
+		line-height: 1.4;
+	}
+	
 	.post-description {
 		color: #666;
-		margin-bottom: 1rem;
+		margin-bottom: 1.5rem;
 		line-height: 1.6;
+		font-size: 0.95rem;
 	}
-
-	.post-card time {
+	
+	.post-date {
 		color: #999;
-		font-size: 0.9rem;
+		font-size: 0.85rem;
 	}
-
+	
+	.cta-section {
+		padding: 5rem 0;
+		background: #fff;
+		text-align: center;
+	}
+	
+	.cta-section h2 {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+		color: #1a1a2e;
+	}
+	
+	.cta-section p {
+		color: #666;
+		margin-bottom: 2rem;
+	}
+	
+	.btn-primary {
+		display: inline-block;
+		background: #ff6b6b;
+		color: white;
+		padding: 1rem 2.5rem;
+		border-radius: 50px;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 1rem;
+		transition: all 0.3s ease;
+		text-transform: lowercase;
+	}
+	
+	.btn-primary:hover {
+		background: #ff5252;
+		transform: translateY(-2px);
+		box-shadow: 0 10px 30px rgba(255,107,107,0.3);
+	}
+	
+	@media (max-width: 1024px) {
+		.posts-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	
 	@media (max-width: 768px) {
+		.page-hero h1 {
+			font-size: 2rem;
+		}
+		
 		.posts-grid {
 			grid-template-columns: 1fr;
+		}
+		
+		.cta-section h2 {
+			font-size: 2rem;
 		}
 	}
 </style>

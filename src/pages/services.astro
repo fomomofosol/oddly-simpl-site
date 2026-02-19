@@ -1,226 +1,296 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import Layout from '../layouts/Layout.astro';
 import { SITE_TITLE } from '../consts';
 
 const title = `Services | ${SITE_TITLE}`;
-const description = "Professional music marketing services including Spotify growth, pre-release campaigns, paid advertising, and consulting for artists and labels.";
+const description = "Professional music marketing services including Spotify growth, TikTok marketing, playlist pitching, and paid advertising for independent artists and labels.";
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section class="page-header">
-				<div class="container">
-					<h1>Our Services</h1>
-					<p class="lead">Music marketing services that actually deliver results. No fluff, just growth.</p>
+<Layout title={title} description={description}>
+	<!-- Hero Section -->
+	<section class="page-hero">
+		<div class="container">
+			<h1>Our Services</h1>
+			<p class="subtitle">Professional music marketing that delivers real results</p>
+		</div>
+	</section>
+	
+	<!-- Services Grid -->
+	<section class="services-grid-section">
+		<div class="container">
+			<div class="services-grid">
+				<div class="service-box">
+					<div class="service-icon">
+						<img src="/images/spotify-streams-service.webp" alt="Spotify Growth" />
+					</div>
+					<h3>Spotify Growth</h3>
+					<p>We specialize in triggering Spotify's algorithmic playlists like Discover Weekly, Radio, and Daily Mix. Our proven strategies have helped hundreds of artists gain millions of organic streams.</p>
+					<ul class="service-features">
+						<li>Algorithmic playlist triggering</li>
+						<li>Editorial playlist pitching</li>
+						<li>Listener retention optimization</li>
+						<li>Monthly growth reporting</li>
+					</ul>
 				</div>
-			</section>
-
-			<section class="services-list">
-				<div class="container">
-					<div class="service-card">
-						<div class="service-content">
-							<h2>Spotify Growth Campaigns</h2>
-							<p>We specialize in triggering Spotify's algorithmic playlists like Discover Weekly and Release Radar. Our data-driven approach has helped hundreds of artists achieve sustained organic growth.</p>
-							<ul class="service-features">
-								<li>Algorithmic playlist triggering</li>
-								<li>Sustained listener growth</li>
-								<li>Detailed analytics & reporting</li>
-								<li>Save rate optimization</li>
-							</ul>
-						</div>
-						<div class="service-image">
-							<img src="/images/408-spotify-growth.webp" alt="Spotify growth results" />
-						</div>
+				
+				<div class="service-box">
+					<div class="service-icon">
+						<img src="/images/tiktok-marketing-service.webp" alt="TikTok Marketing" />
 					</div>
-
-					<div class="service-card reverse">
-						<div class="service-content">
-							<h2>Pre-Release Marketing</h2>
-							<p>Supercharge your day 1 streams with strategic pre-release campaigns. We combine organic social tactics with targeted paid ads to build anticipation and drive pre-saves.</p>
-							<ul class="service-features">
-								<li>TikTok organic strategy</li>
-								<li>Instagram & Facebook ads</li>
-								<li>Pre-save campaign setup</li>
-								<li>Fan engagement tactics</li>
-							</ul>
-						</div>
-						<div class="service-image">
-							<img src="/images/pre-save-campaign-results-for-metal-band.webp" alt="Pre-save campaign" />
-						</div>
-					</div>
-
-					<div class="service-card">
-						<div class="service-content">
-							<h2>Paid Advertising</h2>
-							<p>Strategic Facebook and Instagram ad campaigns designed specifically for musicians. We test extensively to find what works for your music and audience.</p>
-							<ul class="service-features">
-								<li>Ad creative testing</li>
-								<li>Audience targeting</li>
-								<li>Conversion optimization</li>
-								<li>ROI tracking & reporting</li>
-							</ul>
-						</div>
-						<div class="service-image">
-							<img src="/images/ad-campaign-testing-for-music-marketing.webp" alt="Ad testing" />
-						</div>
-					</div>
-
-					<div class="service-card reverse">
-						<div class="service-content">
-							<h2>Consulting & Strategy</h2>
-							<p>Get expert guidance on your music marketing strategy. Whether you're planning a release or looking to grow your existing fanbase, we'll create a custom plan.</p>
-							<ul class="service-features">
-								<li>Release strategy planning</li>
-								<li>Social media strategy</li>
-								<li>Content planning</li>
-								<li>1-on-1 coaching sessions</li>
-							</ul>
-						</div>
-						<div class="service-image">
-							<img src="/images/Anthony-Pacheco.png" alt="Consulting" />
-						</div>
-					</div>
+					<h3>TikTok Marketing</h3>
+					<p>Leverage the world's fastest-growing platform to build your fanbase. We create viral-worthy content strategies and connect you with the right creators to amplify your music.</p>
+					<ul class="service-features">
+						<li>Viral content strategy</li>
+						<li>Creator outreach & partnerships</li>
+						<li>Trend-jacking campaigns</li>
+						<li>Sound optimization</li>
+					</ul>
 				</div>
-			</section>
-
-			<section class="cta-section">
-				<div class="container">
-					<h2>Ready to grow your music career?</h2>
-					<p>Let's discuss how we can help you reach more fans.</p>
-					<a href="https://viralsongclub.com" class="cta-button">Book a Free Call</a>
+				
+				<div class="service-box">
+					<div class="service-icon">
+						<img src="/images/paid-ads-service.webp" alt="Paid Advertising" />
+					</div>
+					<h3>Paid Advertising</h3>
+					<p>Data-driven ad campaigns across Meta, TikTok, and Spotify Ad Studio. We manage over $1M in annual ad spend with an average 127% growth rate for our clients.</p>
+					<ul class="service-features">
+						<li>Meta & Instagram ads</li>
+						<li>TikTok advertising</li>
+						<li>Spotify Ad Studio</li>
+						<li>A/B testing & optimization</li>
+					</ul>
 				</div>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+				
+				<div class="service-box">
+					<div class="service-icon">
+						<img src="/images/pre-release-service.webp" alt="Pre-Release Marketing" />
+					</div>
+					<h3>Pre-Release Marketing</h3>
+					<p>Build momentum before your release drops. Our pre-save campaigns and teaser strategies ensure you hit the ground running on release day.</p>
+					<ul class="service-features">
+						<li>Pre-save campaign setup</li>
+						<li>Teaser content strategy</li>
+						<li>Email list building</li>
+						<li>Release week planning</li>
+					</ul>
+				</div>
+				
+				<div class="service-box">
+					<div class="service-icon">
+						<img src="/images/consulting-service.webp" alt="Consulting" />
+					</div>
+					<h3>1-on-1 Consulting</h3>
+					<p>Get personalized guidance from our team of music marketing experts. We'll audit your current strategy and create a custom roadmap for your growth.</p>
+					<ul class="service-features">
+						<li>Strategy audits</li>
+						<li>Custom growth roadmaps</li>
+						<li>Weekly check-ins</li>
+						<li>Direct Slack access</li>
+					</ul>
+				</div>
+				
+				<div class="service-box">
+					<div class="service-icon">
+						<img src="/images/playlist-pitching-service.webp" alt="Playlist Pitching" />
+					</div>
+					<h3>Playlist Pitching</h3>
+					<p>Direct relationships with playlist curators across all genres. We pitch your music to the right playlists to maximize your reach and streams.</p>
+					<ul class="service-features">
+						<li>Editorial playlist pitching</li>
+						<li>Independent curator network</li>
+						<li>Genre-specific targeting</li>
+						<li>Placement tracking</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- CTA Section -->
+	<section class="cta-section">
+		<div class="shape-divider shape-top">
+			<svg viewBox="0 0 1000 100" preserveAspectRatio="none">
+				<path d="M0,6V0h1000v100L0,6z"/>
+			</svg>
+		</div>
+		
+		<div class="container">
+			<h2>Ready to grow your music career?</h2>
+			<p>Let's discuss how we can help you reach your goals.</p>
+			<a href="/#book-a-call" class="btn-primary">Book a free call</a>
+		</div>
+	</section>
+</Layout>
 
 <style>
 	.container {
 		max-width: 1200px;
 		margin: 0 auto;
-		padding: 0 2rem;
+		padding: 0 1.5rem;
 	}
-
-	.page-header {
-		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-		color: white;
-		padding: 5rem 0;
+	
+	.page-hero {
+		background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+		color: #fff;
+		padding: 6rem 0 4rem;
 		text-align: center;
 	}
-
-	.page-header h1 {
+	
+	.page-hero h1 {
 		font-size: 3rem;
 		margin-bottom: 1rem;
 	}
-
-	.lead {
-		font-size: 1.25rem;
-		opacity: 0.9;
-		max-width: 600px;
-		margin: 0 auto;
+	
+	.subtitle {
+		color: rgba(255,255,255,0.8);
+		font-size: 1.2rem;
 	}
-
-	.services-list {
+	
+	.services-grid-section {
 		padding: 5rem 0;
+		background: #f8f9fa;
 	}
-
-	.service-card {
+	
+	.services-grid {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 4rem;
-		align-items: center;
-		margin-bottom: 5rem;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2rem;
 	}
-
-	.service-card.reverse {
-		direction: rtl;
+	
+	.service-box {
+		background: #fff;
+		padding: 2.5rem;
+		border-radius: 20px;
+		box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+		transition: transform 0.3s, box-shadow 0.3s;
 	}
-
-	.service-card.reverse > * {
-		direction: ltr;
+	
+	.service-box:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 15px 40px rgba(0,0,0,0.12);
 	}
-
-	.service-content h2 {
-		font-size: 2rem;
+	
+	.service-icon {
+		width: 80px;
+		height: 80px;
+		margin-bottom: 1.5rem;
+	}
+	
+	.service-icon img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+	
+	.service-box h3 {
+		font-size: 1.3rem;
 		margin-bottom: 1rem;
+		color: #1a1a2e;
 	}
-
-	.service-content p {
+	
+	.service-box p {
 		color: #666;
 		margin-bottom: 1.5rem;
 		line-height: 1.7;
 	}
-
+	
 	.service-features {
 		list-style: none;
-		padding: 0;
 	}
-
+	
 	.service-features li {
 		padding: 0.5rem 0;
 		padding-left: 1.5rem;
 		position: relative;
+		color: #555;
 	}
-
+	
 	.service-features li::before {
 		content: "✓";
 		position: absolute;
 		left: 0;
-		color: #667eea;
+		color: #ff6b6b;
 		font-weight: bold;
 	}
-
-	.service-image img {
-		width: 100%;
-		border-radius: 12px;
-		box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-	}
-
+	
 	.cta-section {
-		background: #f8f9fa;
-		padding: 5rem 0;
+		background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+		padding: 6rem 0;
+		position: relative;
+		margin-top: -50px;
+		color: #fff;
 		text-align: center;
 	}
-
+	
+	.shape-divider {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		overflow: hidden;
+		line-height: 0;
+	}
+	
+	.shape-divider.shape-top {
+		top: 0;
+	}
+	
+	.shape-divider svg {
+		position: relative;
+		display: block;
+		width: calc(100% + 1.3px);
+		height: 100px;
+	}
+	
+	.shape-divider path {
+		fill: #f8f9fa;
+	}
+	
 	.cta-section h2 {
-		font-size: 2rem;
+		font-size: 2.5rem;
 		margin-bottom: 1rem;
 	}
-
+	
 	.cta-section p {
-		color: #666;
+		color: rgba(255,255,255,0.8);
 		margin-bottom: 2rem;
 	}
-
-	.cta-button {
+	
+	.btn-primary {
 		display: inline-block;
 		background: #ff6b6b;
 		color: white;
 		padding: 1rem 2.5rem;
-		border-radius: 8px;
+		border-radius: 50px;
 		text-decoration: none;
 		font-weight: 600;
-		transition: all 0.2s;
+		font-size: 1rem;
+		transition: all 0.3s ease;
+		text-transform: lowercase;
 	}
-
-	.cta-button:hover {
+	
+	.btn-primary:hover {
 		background: #ff5252;
 		transform: translateY(-2px);
+		box-shadow: 0 10px 30px rgba(255,107,107,0.3);
 	}
-
+	
+	@media (max-width: 1024px) {
+		.services-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	
 	@media (max-width: 768px) {
-		.service-card {
+		.page-hero h1 {
+			font-size: 2rem;
+		}
+		
+		.services-grid {
 			grid-template-columns: 1fr;
-			gap: 2rem;
+		}
+		
+		.cta-section h2 {
+			font-size: 2rem;
 		}
 	}
 </style>
