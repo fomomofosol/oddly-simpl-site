@@ -1,449 +1,619 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import Layout from '../layouts/Layout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-).slice(0, 4);
+const title = SITE_TITLE;
+const description = SITE_DESCRIPTION;
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<!-- Hero Section -->
-			<section class="hero">
-				<div class="container">
-					<div class="hero-content">
-						<h1>Increase your fans and streams stress free</h1>
-						<p class="hero-description">
-							We provide <strong>unparalleled Spotify growth services, resources and expertise</strong> 
-							to help major record label and indie artists alike.
-						</p>
-						<a href="#learn-more" class="cta-button">Launch a campaign</a>
+<Layout title={title} description={description}>
+	<!-- Hero Section -->
+	<section class="hero-section">
+		<div class="container">
+			<div class="hero-content">
+				<h1 class="hero-title">Increase your fans and<br>streams stress free</h1>
+				
+				<div class="hero-images">
+					<div class="phone-mockup">
+						<img src="/images/boyu-spotify-growth.webp" alt="Boyu Spotify Growth" />
 					</div>
-					<div class="hero-images">
-						<img src="/images/boyu-spotify-growth.webp" alt="Spotify growth results" />
+					<div class="phone-mockup">
 						<img src="/images/spotify-ad-studio.webp" alt="Spotify Ad Studio" />
-						<img src="/images/408-spotify-growth.webp" alt="Client growth" />
+					</div>
+					<div class="phone-mockup">
+						<img src="/images/408-spotify-growth.webp" alt="408 Spotify Growth" />
 					</div>
 				</div>
-			</section>
-
-			<!-- Stats Section -->
-			<section class="stats">
-				<div class="container">
-					<div class="stats-grid">
-						<div class="stat">
-							<span class="stat-number">500+</span>
-							<span class="stat-label">Campaigns ran to date</span>
-						</div>
-						<div class="stat">
-							<span class="stat-number">$1 million+</span>
-							<span class="stat-label">Managed ad spend per year</span>
-						</div>
-						<div class="stat">
-							<span class="stat-number">127%</span>
-							<span class="stat-label">Average growth rate</span>
+				
+				<p class="hero-text">
+					We provide <strong>unparalleled Spotify growth services, resources and expertise</strong> to help major record label and indie artists alike.
+				</p>
+				
+				<a href="#learn-more" class="btn-primary">Launch a campaign</a>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Stats Section -->
+	<section class="stats-section">
+		<div class="container">
+			<h2 class="section-title">our experience</h2>
+			
+			<div class="stats-grid">
+				<div class="stat-card">
+					<h3 class="stat-number">500+</h3>
+					<p class="stat-label">Campaigns ran to date</p>
+				</div>
+				<div class="stat-card">
+					<h3 class="stat-number">$1 million+</h3>
+					<p class="stat-label">Managed ad spend per year</p>
+				</div>
+				<div class="stat-card">
+					<h3 class="stat-number">127%</h3>
+					<p class="stat-label">Average growth rate</p>
+				</div>
+			</div>
+			
+			<img src="/images/simpl-music-marketing-clients.webp" alt="Our Clients" class="clients-banner" />
+		</div>
+	</section>
+	
+	<!-- Services Section -->
+	<section class="services-section" id="numbers">
+		<div class="shape-divider shape-top">
+			<svg viewBox="0 0 1000 100" preserveAspectRatio="none">
+				<path d="M0,6V0h1000v100L0,6z"/>
+			</svg>
+		</div>
+		
+		<div class="container">
+			<h2 class="section-title light">Music Marketing<br><span>services that get you fans - not numbers</span></h2>
+			
+			<div class="services-grid">
+				<div class="service-card">
+					<h3>Algorithmic growth (almost) every time.</h3>
+					<p>We have an incredible track record when it comes to triggering Spotify algorithmic playlists such as Discover Weekly and Radio.</p>
+					<img src="/images/rohna-spotify-growth.webp" alt="Rohna Spotify Growth" />
+				</div>
+				
+				<div class="service-card">
+					<h3>Pre-release marketing that works.</h3>
+					<p>Supercharge your day 1 streams with pre-release marketing strategies via organic social on TikTok, paid ads on Instagram + more.</p>
+					<img src="/images/pre-save-campaign-results-for-metal-band.webp" alt="Pre-save Campaign Results" />
+				</div>
+				
+				<div class="service-card">
+					<h3>A badass team that actually does stuff!</h3>
+					<p><em>We like to test. A lot.</em> We don't mess around, and make sure that you get the maximum ROI when it comes to your marketing dollars.</p>
+					<img src="/images/ad-campaign-testing-for-music-marketing.webp" alt="Ad Campaign Testing" />
+				</div>
+			</div>
+		</div>
+		
+		<div class="shape-divider shape-bottom">
+			<svg viewBox="0 0 1000 100" preserveAspectRatio="none">
+				<path d="M0,6V0h1000v100L0,6z"/>
+			</svg>
+		</div>
+	</section>
+	
+	<!-- Contact Form Section -->
+	<section class="contact-section" id="learn-more">
+		<div class="shape-divider shape-top">
+			<svg viewBox="0 0 1000 100" preserveAspectRatio="none">
+				<path d="M0,6V0h1000v100L0,6z"/>
+			</svg>
+		</div>
+		
+		<div class="container">
+			<iframe
+				src="https://tally.so/embed/w5Brbo?alignLeft=1&transparentBackground=1"
+				width="100%"
+				height="600"
+				frameborder="0"
+				title="Launch your campaign">
+			</iframe>
+		</div>
+	</section>
+	
+	<!-- Testimonials Section -->
+	<section class="testimonials-section">
+		<div class="container">
+			<div class="testimonials-grid">
+				<div class="testimonial-card">
+					<p class="testimonial-text">"My numbers have never been this good."</p>
+					<div class="testimonial-author">
+						<img src="/images/bansheekid.webp" alt="Bansheekid" />
+						<div>
+							<strong>Bansheekid</strong>
+							<span>Independent Artist</span>
 						</div>
 					</div>
-					<img src="/images/simpl-music-marketing-clients.webp" alt="Our clients" class="clients-img" />
 				</div>
-			</section>
-
-			<!-- Services Section -->
-			<section class="services" id="learn-more">
-				<div class="container">
-					<h2>Music Marketing services that get you fans - not numbers</h2>
-					<div class="services-grid">
-						<div class="service">
-							<h3>Algorithmic growth (almost) every time.</h3>
-							<p>We have an incredible track record when it comes to triggering Spotify algorithmic playlists such as Discover Weekly and Radio.</p>
-							<img src="/images/rohna-spotify-growth.webp" alt="Algorithmic growth" />
-						</div>
-						<div class="service">
-							<h3>Pre-release marketing that works.</h3>
-							<p>Supercharge your day 1 streams with pre-release marketing strategies via organic social on TikTok, paid ads on Instagram + more.</p>
-							<img src="/images/pre-save-campaign-results-for-metal-band.webp" alt="Pre-save campaigns" />
-						</div>
-						<div class="service">
-							<h3>A badass team that actually does stuff!</h3>
-							<p>We like to test. <em>A lot.</em> We don't mess around, and make sure that you get the maximum ROI when it comes to your marketing dollars.</p>
-							<img src="/images/ad-campaign-testing-for-music-marketing.webp" alt="Ad testing" />
+				
+				<div class="testimonial-card">
+					<p class="testimonial-text">"Working with Anthony is awesome! Not only do we have a better understanding on how to effectively run ads and build our audience, but we also have a great time talking with him."</p>
+					<div class="testimonial-author">
+						<img src="/images/here-for-the-night-band.webp" alt="Here for the Night" />
+						<div>
+							<strong>Here for the Night</strong>
+							<span>Independent Artist</span>
 						</div>
 					</div>
 				</div>
-			</section>
-
-			<!-- Blog Section -->
-			<section class="blog">
-				<div class="container">
-					<h2>Learn Music Marketing Strategies</h2>
-					<p class="section-intro">Check out the latest from our music marketing and promotion blog. We cover Spotify best practices, music marketing strategy, pre-save best practices + more.</p>
-					
-					<div class="blog-grid">
-						{posts.map((post) => (
-							<article class="blog-card">
-								<a href={`/learn/${post.slug}/`}>
-									<h3>{post.data.title}</h3>
-									<p>{post.data.description?.slice(0, 150)}...</p>
-									<span class="read-more">Read More →</span>
-								</a>
-							</article>
-						))}
-					</div>
-					
-					<a href="/learn" class="btn-secondary">View all articles</a>
-				</div>
-			</section>
-
-			<!-- Lead Magnet Section -->
-			<section class="lead-magnet">
-				<div class="container">
-					<div class="lead-content">
-						<h2>Create 30 Days of Content in Just 2 Hours</h2>
-						<p>Get the step-by-step system used by 100+ artists to grow their Spotify streams and fanbase through strategic short form content.</p>
-						<ul>
-							<li>The 6-step system to batch create 30 days of content in one afternoon</li>
-							<li>How to find & film in perfect locations that make your videos go viral</li>
-							<li>Proven hooks and captions that drive real Spotify streams</li>
-							<li>The exact editing formula used by artists getting millions of views</li>
-						</ul>
-						<a href="https://viralsongclub.com" class="cta-button">Get The Guide</a>
+				
+				<div class="testimonial-card">
+					<p class="testimonial-text">"The team over at simpl. Helped Stoneside astronomically. One of the most enjoyable things was the fact that they gave extremely thorough breakdowns on what was working best for our campaign."</p>
+					<div class="testimonial-author">
+						<img src="/images/client-photo.webp" alt="Stoneside" />
+						<div>
+							<strong>Stoneside</strong>
+							<span>Independent Artist</span>
+						</div>
 					</div>
 				</div>
-			</section>
-
-			<!-- Testimonials Section -->
-			<section class="testimonials">
-				<div class="container">
-					<h2>What people are saying about us</h2>
-					<div class="testimonials-grid">
-						<blockquote class="testimonial">
-							<p>"Anthony is quite literally the best in the biz."</p>
-							<footer>
-								<img src="/images/sean-lewow.webp" alt="Sean Lewow" />
-								<cite>Sean Lewow, Ourros Management</cite>
-							</footer>
-						</blockquote>
-						<blockquote class="testimonial">
-							<p>"Anthony's efforts have delivered us a fan base that consume our content, buy our merch, and have legitimately connected with our art."</p>
-							<footer>
-								<img src="/images/good-terms-band.webp" alt="Good Terms" />
-								<cite>Good Terms, Independent Artist</cite>
-							</footer>
-						</blockquote>
+			</div>
+			
+			<div class="growth-chart">
+				<img src="/images/music-marketing-campaign-growth.webp" alt="Campaign Growth" />
+			</div>
+			
+			<div class="testimonials-grid secondary">
+				<div class="testimonial-card">
+					<p class="testimonial-text">"This campaign has blown past my expectations in every way. Seriously thank you for everything."</p>
+					<div class="testimonial-author">
+						<img src="/images/client-testimonial.webp" alt="Client" />
+						<div>
+							<strong>Good Terms</strong>
+							<span>Independent Artist</span>
+						</div>
 					</div>
 				</div>
-			</section>
-
-			<!-- CTA Section -->
-			<section class="cta">
-				<div class="container">
-					<h2>we want to work with you</h2>
-					<p>We can get the ball rollin ASAP. Let's chat.</p>
-					<a href="https://viralsongclub.com" class="cta-button">hop on a call</a>
+				
+				<div class="testimonial-card">
+					<p class="testimonial-text">"There is literally no one else I'd trust when sending over client referrals to."</p>
+					<div class="testimonial-author">
+						<img src="/images/david-puckett.webp" alt="David Puckett" />
+						<div>
+							<strong>David Puckett</strong>
+							<span>Drummer @ We Came As Romans, CEO @ Hyperculture Marketing</span>
+						</div>
+					</div>
 				</div>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+			</div>
+			
+			<div class="cta-section">
+				<h2>we want to work<br>with you</h2>
+				<p>We can get the ball rollin ASAP. Let's chat.</p>
+				<a href="#book-a-call" class="btn-primary">hop on a call</a>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Viral Song Club Section -->
+	<section class="vsc-section">
+		<div class="container">
+			<div class="vsc-content">
+				<div class="vsc-text">
+					<h2>Get more done.</h2>
+					<p>Stop wasting time and <strong>know exactly what to do</strong> pre-release and post-release with our music release planner template – available inside our Viral Song Club.</p>
+					<a href="https://viralsongclub.com?utm_source=website&utm_medium=organic&utm_campaign=simpl" target="_blank" rel="noopener" class="btn-primary">Plan your next release NOW!</a>
+				</div>
+				<div class="vsc-image">
+					<img src="/images/Blog-Featured-Images-1-1.webp" alt="Viral Song Club" />
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Final CTA Section -->
+	<section class="final-cta-section">
+		<div class="shape-divider shape-top">
+			<svg viewBox="0 0 1000 100" preserveAspectRatio="none">
+				<path d="M0,6V0h1000v100L0,6z"/>
+			</svg>
+		</div>
+		
+		<div class="container">
+			<h2>Ready to get the fanbase you've dreamed of?</h2>
+			<p>Get in touch with us and we will chat about your marketing needs, and show you what we are capable of with our done-for-you music marketing services.</p>
+			
+			<iframe
+				id="book-a-call"
+				src="https://tally.so/embed/w5Brbo?alignLeft=1&transparentBackground=1"
+				width="100%"
+				height="480"
+				frameborder="0"
+				title="Launch your campaign">
+			</iframe>
+		</div>
+		
+		<div class="shape-divider shape-bottom">
+			<svg viewBox="0 0 1000 100" preserveAspectRatio="none">
+				<path d="M0,6V0h1000v100L0,6z"/>
+			</svg>
+		</div>
+	</section>
+</Layout>
 
 <style>
 	.container {
 		max-width: 1200px;
 		margin: 0 auto;
-		padding: 0 2rem;
+		padding: 0 1.5rem;
 	}
-
-	/* Hero */
-	.hero {
-		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-		color: white;
-		padding: 6rem 0;
+	
+	/* Hero Section */
+	.hero-section {
+		padding: 4rem 0 6rem;
+		background: #fff;
 	}
-	.hero .container {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 4rem;
-		align-items: center;
+	
+	.hero-content {
+		text-align: center;
 	}
-	.hero h1 {
+	
+	.hero-title {
 		font-size: 3rem;
-		line-height: 1.1;
-		margin-bottom: 1.5rem;
+		font-weight: 700;
+		margin-bottom: 3rem;
+		color: #1a1a2e;
+		line-height: 1.2;
 	}
-	.hero-description {
-		font-size: 1.25rem;
-		margin-bottom: 2rem;
-		opacity: 0.95;
-	}
+	
 	.hero-images {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 1rem;
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+		margin-bottom: 3rem;
+		flex-wrap: wrap;
 	}
-	.hero-images img {
+	
+	.phone-mockup {
+		flex: 0 0 280px;
+	}
+	
+	.phone-mockup img {
 		width: 100%;
-		border-radius: 12px;
-		box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+		border-radius: 20px;
+		box-shadow: 0 20px 60px rgba(0,0,0,0.15);
 	}
-
-	/* Buttons */
-	.cta-button {
+	
+	.hero-text {
+		font-size: 1.1rem;
+		max-width: 700px;
+		margin: 0 auto 2rem;
+		color: #555;
+	}
+	
+	.btn-primary {
 		display: inline-block;
 		background: #ff6b6b;
 		color: white;
-		padding: 1rem 2rem;
-		border-radius: 8px;
+		padding: 1rem 2.5rem;
+		border-radius: 50px;
 		text-decoration: none;
 		font-weight: 600;
-		transition: all 0.2s;
+		font-size: 1rem;
+		transition: all 0.3s ease;
+		text-transform: lowercase;
 	}
-	.cta-button:hover {
+	
+	.btn-primary:hover {
 		background: #ff5252;
 		transform: translateY(-2px);
+		box-shadow: 0 10px 30px rgba(255,107,107,0.3);
 	}
-	.btn-secondary {
-		display: inline-block;
-		background: transparent;
-		color: #667eea;
-		border: 2px solid #667eea;
-		padding: 0.75rem 1.5rem;
-		border-radius: 8px;
-		text-decoration: none;
-		font-weight: 600;
-		margin-top: 2rem;
-	}
-
-	/* Stats */
-	.stats {
-		padding: 4rem 0;
+	
+	/* Stats Section */
+	.stats-section {
+		padding: 5rem 0;
 		background: #f8f9fa;
 		text-align: center;
 	}
+	
+	.section-title {
+		font-size: 2rem;
+		margin-bottom: 3rem;
+		color: #1a1a2e;
+		text-transform: lowercase;
+	}
+	
+	.section-title.light {
+		color: #fff;
+	}
+	
+	.section-title span {
+		color: rgba(255,255,255,0.8);
+	}
+	
 	.stats-grid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 3rem;
-		margin-bottom: 3rem;
+		margin-bottom: 4rem;
 	}
+	
+	.stat-card {
+		text-align: center;
+	}
+	
 	.stat-number {
-		display: block;
 		font-size: 3rem;
-		font-weight: 800;
-		color: #667eea;
+		font-weight: 700;
+		color: #1a1a2e;
+		margin-bottom: 0.5rem;
 	}
+	
 	.stat-label {
 		color: #666;
 		font-size: 1rem;
 	}
-	.clients-img {
-		max-width: 800px;
-		margin: 0 auto;
+	
+	.clients-banner {
+		max-width: 100%;
+		height: auto;
 	}
-
-	/* Services */
-	.services {
-		padding: 5rem 0;
-	}
-	.services h2 {
-		text-align: center;
-		font-size: 2.5rem;
-		margin-bottom: 3rem;
-	}
-	.services-grid {
-		display: grid;
-		gap: 4rem;
-	}
-	.service {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 3rem;
-		align-items: center;
-	}
-	.service:nth-child(even) {
-		direction: rtl;
-	}
-	.service:nth-child(even) > * {
-		direction: ltr;
-	}
-	.service h3 {
-		font-size: 2rem;
-		margin-bottom: 1rem;
-	}
-	.service img {
-		width: 100%;
-		border-radius: 12px;
-		box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-	}
-
-	/* Blog */
-	.blog {
-		padding: 5rem 0;
-		background: #f8f9fa;
-		text-align: center;
-	}
-	.blog h2 {
-		font-size: 2.5rem;
-		margin-bottom: 1rem;
-	}
-	.section-intro {
-		max-width: 600px;
-		margin: 0 auto 3rem;
-		color: #666;
-	}
-	.blog-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		gap: 2rem;
-		text-align: left;
-		margin-bottom: 2rem;
-	}
-	.blog-card {
-		background: white;
-		border-radius: 12px;
-		overflow: hidden;
-		transition: transform 0.2s, box-shadow 0.2s;
-	}
-	.blog-card:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-	}
-	.blog-card a {
-		display: block;
-		padding: 1.5rem;
-		color: inherit;
-		text-decoration: none;
-	}
-	.blog-card h3 {
-		font-size: 1.25rem;
-		margin-bottom: 0.75rem;
-	}
-	.blog-card p {
-		color: #666;
-		font-size: 0.95rem;
-	}
-	.read-more {
-		color: #667eea;
-		font-weight: 600;
-		margin-top: 1rem;
-		display: inline-block;
-	}
-
-	/* Lead Magnet */
-	.lead-magnet {
-		padding: 5rem 0;
-		background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-		color: white;
-	}
-	.lead-content {
-		max-width: 600px;
-		margin: 0 auto;
-		text-align: center;
-	}
-	.lead-content h2 {
-		font-size: 2rem;
-		margin-bottom: 1rem;
-	}
-	.lead-content ul {
-		text-align: left;
-		margin: 2rem 0;
-	}
-	.lead-content li {
-		margin-bottom: 0.75rem;
-		padding-left: 1.5rem;
+	
+	/* Services Section */
+	.services-section {
+		background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+		padding: 8rem 0 6rem;
 		position: relative;
+		margin-top: -50px;
 	}
-	.lead-content li::before {
-		content: "✓";
+	
+	.shape-divider {
 		position: absolute;
 		left: 0;
-		color: #4ade80;
+		width: 100%;
+		overflow: hidden;
+		line-height: 0;
 	}
-
-	/* Testimonials */
-	.testimonials {
+	
+	.shape-divider svg {
+		position: relative;
+		display: block;
+		width: calc(100% + 1.3px);
+		height: 100px;
+	}
+	
+	.shape-top {
+		top: 0;
+	}
+	
+	.shape-bottom {
+		bottom: 0;
+		transform: rotate(180deg);
+	}
+	
+	.shape-divider path {
+		fill: #f8f9fa;
+	}
+	
+	.services-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 3rem;
+		margin-top: 4rem;
+	}
+	
+	.service-card {
+		color: #fff;
+	}
+	
+	.service-card h3 {
+		font-size: 1.4rem;
+		margin-bottom: 1rem;
+		color: #fff;
+	}
+	
+	.service-card p {
+		color: rgba(255,255,255,0.8);
+		margin-bottom: 1.5rem;
+		line-height: 1.7;
+	}
+	
+	.service-card img {
+		width: 100%;
+		border-radius: 15px;
+		box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+	}
+	
+	/* Contact Section */
+	.contact-section {
+		background: #fff;
+		padding: 6rem 0 4rem;
+		position: relative;
+		margin-top: -50px;
+	}
+	
+	/* Testimonials Section */
+	.testimonials-section {
 		padding: 5rem 0;
-		background: white;
+		background: #fff;
 	}
-	.testimonials h2 {
-		text-align: center;
-		font-size: 2.5rem;
-		margin-bottom: 3rem;
-	}
+	
 	.testimonials-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+		grid-template-columns: repeat(3, 1fr);
 		gap: 2rem;
+		margin-bottom: 3rem;
 	}
-	.testimonial {
+	
+	.testimonials-grid.secondary {
+		grid-template-columns: repeat(2, 1fr);
+		max-width: 800px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.testimonial-card {
 		background: #f8f9fa;
 		padding: 2rem;
-		border-radius: 12px;
-		margin: 0;
+		border-radius: 15px;
 	}
-	.testimonial p {
-		font-size: 1.1rem;
+	
+	.testimonial-text {
 		font-style: italic;
+		color: #555;
 		margin-bottom: 1.5rem;
+		line-height: 1.7;
 	}
-	.testimonial footer {
+	
+	.testimonial-author {
 		display: flex;
 		align-items: center;
 		gap: 1rem;
 	}
-	.testimonial img {
+	
+	.testimonial-author img {
 		width: 50px;
 		height: 50px;
 		border-radius: 50%;
 		object-fit: cover;
 	}
-	.testimonial cite {
-		font-style: normal;
-		font-weight: 600;
+	
+	.testimonial-author div {
+		display: flex;
+		flex-direction: column;
 	}
-
-	/* CTA Section */
-	.cta {
-		padding: 5rem 0;
+	
+	.testimonial-author strong {
+		color: #1a1a2e;
+		font-size: 0.95rem;
+	}
+	
+	.testimonial-author span {
+		color: #888;
+		font-size: 0.85rem;
+	}
+	
+	.growth-chart {
 		text-align: center;
-		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-		color: white;
+		margin: 3rem 0;
 	}
-	.cta h2 {
+	
+	.growth-chart img {
+		max-width: 100%;
+		height: auto;
+		border-radius: 15px;
+	}
+	
+	.cta-section {
+		text-align: center;
+		padding: 4rem 0;
+	}
+	
+	.cta-section h2 {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+		text-transform: lowercase;
+	}
+	
+	.cta-section p {
+		color: #666;
+		margin-bottom: 2rem;
+	}
+	
+	/* VSC Section */
+	.vsc-section {
+		padding: 5rem 0;
+		background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+		color: #fff;
+	}
+	
+	.vsc-content {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+		align-items: center;
+	}
+	
+	.vsc-text h2 {
+		font-size: 2.5rem;
+		margin-bottom: 1.5rem;
+	}
+	
+	.vsc-text p {
+		color: rgba(255,255,255,0.8);
+		margin-bottom: 2rem;
+		line-height: 1.7;
+		font-size: 1.1rem;
+	}
+	
+	.vsc-image img {
+		width: 100%;
+		border-radius: 15px;
+		box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+	}
+	
+	/* Final CTA Section */
+	.final-cta-section {
+		background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+		padding: 8rem 0 6rem;
+		position: relative;
+		margin-top: -50px;
+		color: #fff;
+		text-align: center;
+	}
+	
+	.final-cta-section h2 {
 		font-size: 2.5rem;
 		margin-bottom: 1rem;
 	}
-	.cta p {
-		font-size: 1.25rem;
-		margin-bottom: 2rem;
-		opacity: 0.9;
+	
+	.final-cta-section p {
+		color: rgba(255,255,255,0.8);
+		max-width: 600px;
+		margin: 0 auto 3rem;
+		font-size: 1.1rem;
 	}
-
-	@media (max-width: 768px) {
-		.hero .container {
+	
+	/* Responsive */
+	@media (max-width: 1024px) {
+		.hero-title {
+			font-size: 2.5rem;
+		}
+		
+		.services-grid,
+		.testimonials-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		
+		.vsc-content {
 			grid-template-columns: 1fr;
 		}
-		.hero h1 {
+	}
+	
+	@media (max-width: 768px) {
+		.hero-title {
 			font-size: 2rem;
 		}
-		.stats-grid {
+		
+		.hero-images {
+			flex-direction: column;
+			align-items: center;
+		}
+		
+		.phone-mockup {
+			flex: 0 0 auto;
+			max-width: 280px;
+		}
+		
+		.stats-grid,
+		.services-grid,
+		.testimonials-grid,
+		.testimonials-grid.secondary {
 			grid-template-columns: 1fr;
 		}
-		.service {
-			grid-template-columns: 1fr;
+		
+		.stat-number {
+			font-size: 2.5rem;
 		}
-		.testimonials-grid {
-			grid-template-columns: 1fr;
+		
+		.section-title {
+			font-size: 1.75rem;
 		}
 	}
 </style>
