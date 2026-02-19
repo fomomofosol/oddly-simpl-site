@@ -1,8 +1,13 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+).slice(0, 4);
 ---
 
 <!doctype html>
@@ -13,37 +18,432 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<!-- Hero Section -->
+			<section class="hero">
+				<div class="container">
+					<div class="hero-content">
+						<h1>Increase your fans and streams stress free</h1>
+						<p class="hero-description">
+							We provide <strong>unparalleled Spotify growth services, resources and expertise</strong> 
+							to help major record label and indie artists alike.
+						</p>
+						<a href="#learn-more" class="cta-button">Launch a campaign</a>
+					</div>
+					<div class="hero-images">
+						<img src="/images/boyu-spotify-growth.webp" alt="Spotify growth results" />
+						<img src="/images/spotify-ad-studio.webp" alt="Spotify Ad Studio" />
+						<img src="/images/408-spotify-growth.webp" alt="Client growth" />
+					</div>
+				</div>
+			</section>
+
+			<!-- Stats Section -->
+			<section class="stats">
+				<div class="container">
+					<div class="stats-grid">
+						<div class="stat">
+							<span class="stat-number">500+</span>
+							<span class="stat-label">Campaigns ran to date</span>
+						</div>
+						<div class="stat">
+							<span class="stat-number">$1 million+</span>
+							<span class="stat-label">Managed ad spend per year</span>
+						</div>
+						<div class="stat">
+							<span class="stat-number">127%</span>
+							<span class="stat-label">Average growth rate</span>
+						</div>
+					</div>
+					<img src="/images/simpl-music-marketing-clients.webp" alt="Our clients" class="clients-img" />
+				</div>
+			</section>
+
+			<!-- Services Section -->
+			<section class="services" id="learn-more">
+				<div class="container">
+					<h2>Music Marketing services that get you fans - not numbers</h2>
+					<div class="services-grid">
+						<div class="service">
+							<h3>Algorithmic growth (almost) every time.</h3>
+							<p>We have an incredible track record when it comes to triggering Spotify algorithmic playlists such as Discover Weekly and Radio.</p>
+							<img src="/images/rohna-spotify-growth.webp" alt="Algorithmic growth" />
+						</div>
+						<div class="service">
+							<h3>Pre-release marketing that works.</h3>
+							<p>Supercharge your day 1 streams with pre-release marketing strategies via organic social on TikTok, paid ads on Instagram + more.</p>
+							<img src="/images/pre-save-campaign-results-for-metal-band.webp" alt="Pre-save campaigns" />
+						</div>
+						<div class="service">
+							<h3>A badass team that actually does stuff!</h3>
+							<p>We like to test. <em>A lot.</em> We don't mess around, and make sure that you get the maximum ROI when it comes to your marketing dollars.</p>
+							<img src="/images/ad-campaign-testing-for-music-marketing.webp" alt="Ad testing" />
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Blog Section -->
+			<section class="blog">
+				<div class="container">
+					<h2>Learn Music Marketing Strategies</h2>
+					<p class="section-intro">Check out the latest from our music marketing and promotion blog. We cover Spotify best practices, music marketing strategy, pre-save best practices + more.</p>
+					
+					<div class="blog-grid">
+						{posts.map((post) => (
+							<article class="blog-card">
+								<a href={`/learn/${post.slug}/`}>
+									<h3>{post.data.title}</h3>
+									<p>{post.data.description?.slice(0, 150)}...</p>
+									<span class="read-more">Read More →</span>
+								</a>
+							</article>
+						))}
+					</div>
+					
+					<a href="/learn" class="btn-secondary">View all articles</a>
+				</div>
+			</section>
+
+			<!-- Lead Magnet Section -->
+			<section class="lead-magnet">
+				<div class="container">
+					<div class="lead-content">
+						<h2>Create 30 Days of Content in Just 2 Hours</h2>
+						<p>Get the step-by-step system used by 100+ artists to grow their Spotify streams and fanbase through strategic short form content.</p>
+						<ul>
+							<li>The 6-step system to batch create 30 days of content in one afternoon</li>
+							<li>How to find & film in perfect locations that make your videos go viral</li>
+							<li>Proven hooks and captions that drive real Spotify streams</li>
+							<li>The exact editing formula used by artists getting millions of views</li>
+						</ul>
+						<a href="https://viralsongclub.com" class="cta-button">Get The Guide</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- Testimonials Section -->
+			<section class="testimonials">
+				<div class="container">
+					<h2>What people are saying about us</h2>
+					<div class="testimonials-grid">
+						<blockquote class="testimonial">
+							<p>"Anthony is quite literally the best in the biz."</p>
+							<footer>
+								<img src="/images/sean-lewow.webp" alt="Sean Lewow" />
+								<cite>Sean Lewow, Ourros Management</cite>
+							</footer>
+						</blockquote>
+						<blockquote class="testimonial">
+							<p>"Anthony's efforts have delivered us a fan base that consume our content, buy our merch, and have legitimately connected with our art."</p>
+							<footer>
+								<img src="/images/good-terms-band.webp" alt="Good Terms" />
+								<cite>Good Terms, Independent Artist</cite>
+							</footer>
+						</blockquote>
+					</div>
+				</div>
+			</section>
+
+			<!-- CTA Section -->
+			<section class="cta">
+				<div class="container">
+					<h2>we want to work with you</h2>
+					<p>We can get the ball rollin ASAP. Let's chat.</p>
+					<a href="https://viralsongclub.com" class="cta-button">hop on a call</a>
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	/* Hero */
+	.hero {
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		color: white;
+		padding: 6rem 0;
+	}
+	.hero .container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+		align-items: center;
+	}
+	.hero h1 {
+		font-size: 3rem;
+		line-height: 1.1;
+		margin-bottom: 1.5rem;
+	}
+	.hero-description {
+		font-size: 1.25rem;
+		margin-bottom: 2rem;
+		opacity: 0.95;
+	}
+	.hero-images {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+	}
+	.hero-images img {
+		width: 100%;
+		border-radius: 12px;
+		box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+	}
+
+	/* Buttons */
+	.cta-button {
+		display: inline-block;
+		background: #ff6b6b;
+		color: white;
+		padding: 1rem 2rem;
+		border-radius: 8px;
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.2s;
+	}
+	.cta-button:hover {
+		background: #ff5252;
+		transform: translateY(-2px);
+	}
+	.btn-secondary {
+		display: inline-block;
+		background: transparent;
+		color: #667eea;
+		border: 2px solid #667eea;
+		padding: 0.75rem 1.5rem;
+		border-radius: 8px;
+		text-decoration: none;
+		font-weight: 600;
+		margin-top: 2rem;
+	}
+
+	/* Stats */
+	.stats {
+		padding: 4rem 0;
+		background: #f8f9fa;
+		text-align: center;
+	}
+	.stats-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 3rem;
+		margin-bottom: 3rem;
+	}
+	.stat-number {
+		display: block;
+		font-size: 3rem;
+		font-weight: 800;
+		color: #667eea;
+	}
+	.stat-label {
+		color: #666;
+		font-size: 1rem;
+	}
+	.clients-img {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	/* Services */
+	.services {
+		padding: 5rem 0;
+	}
+	.services h2 {
+		text-align: center;
+		font-size: 2.5rem;
+		margin-bottom: 3rem;
+	}
+	.services-grid {
+		display: grid;
+		gap: 4rem;
+	}
+	.service {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		align-items: center;
+	}
+	.service:nth-child(even) {
+		direction: rtl;
+	}
+	.service:nth-child(even) > * {
+		direction: ltr;
+	}
+	.service h3 {
+		font-size: 2rem;
+		margin-bottom: 1rem;
+	}
+	.service img {
+		width: 100%;
+		border-radius: 12px;
+		box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+	}
+
+	/* Blog */
+	.blog {
+		padding: 5rem 0;
+		background: #f8f9fa;
+		text-align: center;
+	}
+	.blog h2 {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+	}
+	.section-intro {
+		max-width: 600px;
+		margin: 0 auto 3rem;
+		color: #666;
+	}
+	.blog-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 2rem;
+		text-align: left;
+		margin-bottom: 2rem;
+	}
+	.blog-card {
+		background: white;
+		border-radius: 12px;
+		overflow: hidden;
+		transition: transform 0.2s, box-shadow 0.2s;
+	}
+	.blog-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+	}
+	.blog-card a {
+		display: block;
+		padding: 1.5rem;
+		color: inherit;
+		text-decoration: none;
+	}
+	.blog-card h3 {
+		font-size: 1.25rem;
+		margin-bottom: 0.75rem;
+	}
+	.blog-card p {
+		color: #666;
+		font-size: 0.95rem;
+	}
+	.read-more {
+		color: #667eea;
+		font-weight: 600;
+		margin-top: 1rem;
+		display: inline-block;
+	}
+
+	/* Lead Magnet */
+	.lead-magnet {
+		padding: 5rem 0;
+		background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+		color: white;
+	}
+	.lead-content {
+		max-width: 600px;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.lead-content h2 {
+		font-size: 2rem;
+		margin-bottom: 1rem;
+	}
+	.lead-content ul {
+		text-align: left;
+		margin: 2rem 0;
+	}
+	.lead-content li {
+		margin-bottom: 0.75rem;
+		padding-left: 1.5rem;
+		position: relative;
+	}
+	.lead-content li::before {
+		content: "✓";
+		position: absolute;
+		left: 0;
+		color: #4ade80;
+	}
+
+	/* Testimonials */
+	.testimonials {
+		padding: 5rem 0;
+		background: white;
+	}
+	.testimonials h2 {
+		text-align: center;
+		font-size: 2.5rem;
+		margin-bottom: 3rem;
+	}
+	.testimonials-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+		gap: 2rem;
+	}
+	.testimonial {
+		background: #f8f9fa;
+		padding: 2rem;
+		border-radius: 12px;
+		margin: 0;
+	}
+	.testimonial p {
+		font-size: 1.1rem;
+		font-style: italic;
+		margin-bottom: 1.5rem;
+	}
+	.testimonial footer {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+	.testimonial img {
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		object-fit: cover;
+	}
+	.testimonial cite {
+		font-style: normal;
+		font-weight: 600;
+	}
+
+	/* CTA Section */
+	.cta {
+		padding: 5rem 0;
+		text-align: center;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		color: white;
+	}
+	.cta h2 {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+	}
+	.cta p {
+		font-size: 1.25rem;
+		margin-bottom: 2rem;
+		opacity: 0.9;
+	}
+
+	@media (max-width: 768px) {
+		.hero .container {
+			grid-template-columns: 1fr;
+		}
+		.hero h1 {
+			font-size: 2rem;
+		}
+		.stats-grid {
+			grid-template-columns: 1fr;
+		}
+		.service {
+			grid-template-columns: 1fr;
+		}
+		.testimonials-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
